@@ -1,0 +1,14 @@
+function [range,heightmax, duration] = projectile(velocity,height0, launch_angle)
+%Models projectile motion as it occurs on Earth
+%   Detailed explanation goes here
+range = ((velocity^2)*sin(2*launch_angle))/9.81;
+duration = ((2*velocity)*sin(launch_angle))/9.81;
+heightmax = height0 + ((velocity^2)*(sin(launch_angle))^2)/(9.81*2);
+
+xcoord = @(velocity, duration, launch_angle)velocity*cos(launch_angle)*duration;
+ycoord = @(velocity, height0,launch_angle, duration)-0.5*9.8*(duration^2) + velocity*sin(launch_angle)*duration + height0;
+
+plot(xcoord, ycoord);
+
+end
+
